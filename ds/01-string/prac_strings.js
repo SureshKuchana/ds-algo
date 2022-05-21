@@ -29,6 +29,27 @@ console.log(reverseOfString2("Koochana"));
 ////////////////////////////////////////////////////////////
 
 function anagram(str1, str2) {
+  if (str1 === str2) return true;
+  if (str1.length !== str2.length) return false;
+
+  let charCountObject = {};
+
+  for (const char of str1) {
+    charCountObject[char] = (charCountObject[char] || 0) + 1;
+  }
+
+  for (const char of str2) {
+    if (!charCountObject[char]) return false;
+    else --charCountObject[char];
+  }
+
+  return true;
+}
+
+console.log(anagram("abc", "cba"));
+console.log(anagram("listen", "slient"));
+
+function anagram1(str1, str2) {
   let objectRes = {};
 
   // if length of two string's is same then return true string
@@ -57,5 +78,21 @@ function anagram(str1, str2) {
   return true;
 }
 
-console.log(anagram("abc", "cba"));
-console.log(anagram("listen", "slient"));
+console.log(anagram1("abc", "cba"));
+console.log(anagram1("listen", "slient"));
+
+// using built-in methods
+
+function anagramWithbuiltInFunc(str1, str2) {
+  let newstr1 = str1.toLowerCase().split("").sort().join();
+  let newstr2 = str2.toLowerCase().split("").sort().join();
+
+  if (newstr1 == newstr2) {
+    console.log("String is Anagrams");
+  } else {
+    console.log("String is Not Anagrams");
+  }
+}
+
+anagramWithbuiltInFunc("Hello", "lolHe");
+anagramWithbuiltInFunc("Indian", "nIndisn");
