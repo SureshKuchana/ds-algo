@@ -96,3 +96,68 @@ function anagramWithbuiltInFunc(str1, str2) {
 
 anagramWithbuiltInFunc("Hello", "lolHe");
 anagramWithbuiltInFunc("Indian", "nIndisn");
+
+// findValueAfterOperations
+
+const finalValueAfterOperations = (operations) =>
+  operations.reduce((a, c) => (c.includes("+") ? ++a : --a), 0);
+
+var finalValueAfterOperations1 = function (operations) {
+  let X = 0;
+  for (let i = 0; i < operations.length; i++) {
+    eval(operations[i]);
+  }
+  return X;
+};
+
+var romanToInt = function (s) {
+  let dec = {
+    I: 1,
+    V: 5,
+    X: 10,
+    L: 50,
+    C: 100,
+    D: 500,
+    M: 1000,
+    IV: 4,
+    IX: 9,
+    XL: 40,
+    XC: 90,
+    CD: 400,
+    CM: 900,
+  };
+  let res = 0;
+
+  for (let i = 0; i < s.length; i++) {
+    console.log(dec[s[i] + s[i + 1]], s[i] + s[i + 1], "dsdsd");
+    if (dec[s[i] + s[i + 1]]) {
+      res += dec[s[i] + s[i + 1]];
+      i++;
+    } else {
+      res += dec[s[i]];
+    }
+  }
+  console.log(res);
+  return res;
+};
+console.log(romanToInt("XIIX"));
+
+// word flipper
+function word_flipper(str) {
+  let res = "";
+  let trimStr = str.split(" ");
+  for (const word of trimStr) {
+    let sss = reverseOfString1(word);
+    res += sss + " ";
+  }
+  return res;
+}
+console.log(word_flipper("hello suresh"));
+
+// hamming distance
+// Eg : I have two strings
+// A B C D & A C C D
+// A B C D
+// A C C D
+// 0 1 0 1
+//
