@@ -161,3 +161,36 @@ console.log(word_flipper("hello suresh"));
 // A C C D
 // 0 1 0 1
 //
+
+// TODO : hamming distance
+
+// first unique character in a given string
+
+// without in-built functions/methods
+function uniqueCharInString(s) {
+  const hashTable = {};
+  for (const char of s) {
+    if (hashTable[char]) hashTable[char]++;
+    else hashTable[char] = 1;
+  }
+
+  for (let i = 0; i < s.length; i++) {
+    const char = s[i];
+    if (hashTable[char] === 1) return i;
+  }
+  return -1;
+}
+
+// with in-built function
+function uniqueCharInString1(s) {
+  for (let index = 0; index < s.length; index++) {
+    const char = s[index];
+    if (s.indexOf(char) === s.lastIndexOf(char)) {
+      return index;
+    }
+  }
+  return -1;
+}
+
+console.log("uniqueCharInString ", uniqueCharInString("aabcc"));
+console.log("uniqueCharInString1 ", uniqueCharInString1("aabcc"));
