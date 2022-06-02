@@ -57,3 +57,24 @@ function isValidSubsequence3(array, sequence) {
   }
   return seqIdx === sequence.length;
 }
+
+// function that takes an array of characters and reverses the letters
+
+function reverseOfCharsInArray(arr) {
+  let leftIndex = 0;
+  let rightIndex = arr.length - 1;
+
+  while (leftIndex < rightIndex) {
+    const temp = arr[leftIndex];
+    arr[leftIndex] = arr[rightIndex];
+    arr[rightIndex] = temp;
+    leftIndex++;
+    rightIndex--;
+  }
+  return arr;
+}
+
+console.log(
+  " reverse of chars an array",
+  reverseOfCharsInArray(["a", "b", "c"])
+);
