@@ -194,3 +194,62 @@ function uniqueCharInString1(s) {
 
 console.log("uniqueCharInString ", uniqueCharInString("aabcc"));
 console.log("uniqueCharInString1 ", uniqueCharInString1("aabcc"));
+
+// group anagram
+
+function groupAnagram(strs) {
+  const ht = {};
+
+  for (const str of strs) {
+    const sortedStr = str.split("").sort().join("");
+    if (ht[sortedStr]) ht[sortedStr].push(str);
+    else ht[sortedStr] = [str];
+  }
+  return Object.values(ht);
+}
+
+console.log("group Anagram ", groupAnagram(["abc", "bca", "cba", "dsds"]));
+
+// is Valid palindrome
+// palindrome is a orginal string === reverse of a string
+// eg : level, radar
+
+function isValidPalindrome(str) {
+  str = str.replace(/[^\w]/gi, "").toLowerCase();
+  let left = 0;
+  let stringLength = str.length - 1;
+  while (left < stringLength) {
+    if (str[left] !== str[stringLength]) return false;
+    left++;
+    stringLength--;
+  }
+  return true;
+}
+
+console.log(" isValidPalindrome ", isValidPalindrome("level"));
+
+function validParenthesis(str) {
+  const par = {
+    "(": ")",
+    "{": "}",
+    "[": "]",
+  };
+  const res = [];
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === "(" || str[i] === "{" || str[i] === "[") {
+      res.push(str[i]);
+    } else {
+      if (par[res.pop()] !== str[i]) {
+        return false;
+      }
+    }
+  }
+  return res.length === 0 ? true : false;
+}
+
+console.log("validParenthesis ", validParenthesis("{{}}"));
+console.log("validParenthesis ", validParenthesis("{[)(]}"));
+console.log("validParenthesis ", validParenthesis("()"));
+console.log("validParenthesis ", validParenthesis("([][]}"));
+console.log("validParenthesis --", validParenthesis("[[]()"));
+console.log("validParenthesis ", validParenthesis("[{}]"));
