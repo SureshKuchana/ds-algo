@@ -58,6 +58,41 @@ function isValidSubsequence3(array, sequence) {
   return seqIdx === sequence.length;
 }
 
+// find the min value in the given array
+function findMinValue(arr) {
+  if (arr.length === 1) return arr[0];
+  if (arr[0] <= 1) return arr[0];
+  let minValue = arr[0];
+  for (let i = 1; i < arr.length; i++) {
+    if (minValue > arr[i]) {
+      minValue = arr[i];
+    }
+  }
+  return minValue;
+}
+
+console.log(" findMinValue ", findMinValue([78, 89, 90, 19]));
+
+// find the 2nd min value in the given array
+function find2ndMinValue(arr) {
+  if (arr.length === 1) return arr[0];
+  if (arr.length === 2) {
+    return arr[0] < arr[1] ? arr[0] : arr[1];
+  }
+
+  let minValue = arr[0]; // 1
+  let maxValue = arr[1]; // 2 arr[2] = 3
+  for (let i = 2; i < arr.length; i++) {
+    if (maxValue < arr[i]) {
+      minValue = arr[i];
+    }
+  }
+  return minValue;
+}
+
+console.log(" find2ndMinValue ", find2ndMinValue([78, 89]));
+console.log(" find2ndMinValue ", find2ndMinValue([78, 89, 90, 19]));
+
 // function that takes an array of characters and reverses the letters
 
 function reverseOfCharsInArray(arr) {
@@ -92,8 +127,6 @@ function reverseWords(message) {
   // as we look for the *end* of the current word
   let currentWordStartIndex = 0;
   for (let i = 0; i <= message.length; i++) {
-    console.log(" message ", message);
-
     // Found the end of the current word!
     if (i === message.length || message[i] === " ") {
       // If we haven't exhausted the string our
@@ -136,3 +169,80 @@ console.log(
     "l",
   ])
 );
+
+// Given all three arrays, write a function to check that my service is first-come, first-served.
+// All food should come out in the same order customers requested it.
+
+// We'll represent each customer order as a unique integer.
+
+// As an example,
+//   Take Out Orders: [1, 3, 5]
+//   Dine In Orders:  [2, 4, 6]
+//   Served Orders:   [1, 2, 4, 6, 5, 3]
+
+// would not be first-come, first-served, since order 3 was requested before order 5 but order 5 was served first.
+
+// But,
+
+// Take Out Orders: [1, 3, 5]
+//  Dine In Orders: [2, 4, 6]
+//   Served Orders: [1, 2, 3, 5, 4, 6]
+
+// would be first-come, first-served.
+
+function isFirstComeFirstServed(takeOutOrders, dineInOrders, servedOrders) {
+  var takeOutOrdersIndex = 0;
+  var dineInOrdersIndex = 0;
+  var takeOutOrdersMaxIndex = takeOutOrders.length - 1;
+  var dineInOrdersMaxIndex = dineInOrders.length - 1;
+
+  for (var i = 0; i < servedOrders.length; i++) {
+    var order = servedOrders[i];
+
+    // if we still have orders in takeOutOrders
+    // and the current order in takeOutOrders is the same
+    // as the current order in servedOrders
+    if (
+      takeOutOrdersIndex <= takeOutOrdersMaxIndex &&
+      order === takeOutOrders[takeOutOrdersIndex]
+    ) {
+      takeOutOrdersIndex++;
+
+      // if we still have orders in dineInOrders
+      // and the current order in dineInOrders is the same
+      // as the current order in servedOrders
+    } else if (
+      dineInOrdersIndex <= dineInOrdersMaxIndex &&
+      order === dineInOrders[dineInOrdersIndex]
+    ) {
+      dineInOrdersIndex++;
+
+      // if the current order in servedOrders doesn't match the current
+      // order in takeOutOrders or dineInOrders, then we're not serving first-come,
+      // first-served
+    } else {
+      return false;
+    }
+  }
+
+  console.log(
+    " dineInOrdersIndex ",
+    dineInOrdersIndex,
+    " takeOutOrdersIndex ",
+    takeOutOrdersIndex
+  );
+
+  // check for any extra orders at the end of takeOutOrders or dineInOrders
+  if (
+    dineInOrdersIndex != dineInOrders.length ||
+    takeOutOrdersIndex != takeOutOrders.length
+  ) {
+    return false;
+  }
+
+  // all orders in servedOrders have been "accounted for"
+  // so we're serving first-come, first-served!
+  return true;
+}
+
+console.log(isFirstComeFirstServed([1, 3, 5], [2, 4, 6], [1, 2, 3, 5, 4, 6]));
