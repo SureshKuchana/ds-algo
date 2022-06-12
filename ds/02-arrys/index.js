@@ -246,3 +246,67 @@ function isFirstComeFirstServed(takeOutOrders, dineInOrders, servedOrders) {
 }
 
 console.log(isFirstComeFirstServed([1, 3, 5], [2, 4, 6], [1, 2, 3, 5, 4, 6]));
+
+// Sorting the arrays
+
+// Bubble sort
+// eg. [1,3,4,5,2] end result should be the [1,2,3,4,5]
+// Iteration 1: [6,4,2,5,7] → [4,6,2,5,7] → [4,2,6,5,7] → [4,2,5,6,7] → [4,2,5,6,7]
+
+// Iteration 2:[4,2,5,6,7] → [2,4,5,6,7] → [2,4,5,6,7] → [2,4,5,6,7] → [2,4,5,6,7]
+
+// Iteration 3: [2,4,5,6,7] → [2,4,5,6,7] → [2,4,5,6,7] → [2,4,5,6,7] → [2,4,5,6,7]
+
+function bubbleSort(arr) {
+  for (let index = 0; index < arr.length; index++) {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] > arr[i + 1]) {
+        let temp = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
+      }
+    }
+  }
+  return arr;
+}
+
+// method 2 using the do while loop
+
+function bubbleSort2(arr) {
+  let isSwapped = false;
+  do {
+    isSwapped = false;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] > arr[i + 1]) {
+        let temp = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
+        isSwapped = true;
+      }
+    }
+  } while (isSwapped);
+
+  return arr;
+}
+
+// console.log(" bubbleSort ", bubbleSort([2, 3, 4, 1]));
+console.log(" bubbleSort2 ---- ", bubbleSort2([2, 3, 4, 1, 9, 4]));
+
+// insertion sort
+function insertionSort(array) {
+  for (let index = 1; index < array.length; index++) {
+    let j;
+    let numberToinsert = array[index];
+    for (j = index - 1; j >= 0 && array[j] > numberToinsert; j--) {
+      array[index + 1] = array[j];
+    }
+    array[index + 1] = insertionSort;
+  }
+  return array;
+}
+
+console.log(" insertionSort ---- ", insertionSort([2, 3, 4, 1, 9, 4]));
+
+// merge the two given array in sorted order
+
+function mergeSortedArrays(arr1, arr2) {}
