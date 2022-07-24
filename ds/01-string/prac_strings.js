@@ -253,3 +253,23 @@ console.log("validParenthesis ", validParenthesis("()"));
 console.log("validParenthesis ", validParenthesis("([][]}"));
 console.log("validParenthesis --", validParenthesis("[[]()"));
 console.log("validParenthesis ", validParenthesis("[{}]"));
+
+// hamming_distance
+// the Hamming distance between two strings of equal length
+// is the number of positions at which the corresponding symbols are different.
+
+// hamming_distance('ACTTGACCGGG','GATCCGGTACA')  res 10
+// hamming_distance('shove','stove')  res 1
+// 9 == hamming_distance('A gentleman','Elegant men')
+
+function hamming_distance(str1, str2) {
+  if (str1.length === str2.length) {
+    let count = 0;
+    for (let index = 0; index < str2.length; index++) {
+      if (str1[index] !== str2[index]) count++;
+    }
+    return count;
+  }
+  return 0;
+}
+console.log(hamming_distance("shove", "stove"));

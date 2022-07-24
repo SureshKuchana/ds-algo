@@ -300,7 +300,7 @@ function insertionSort(array) {
     for (j = index - 1; j >= 0 && array[j] > numberToinsert; j--) {
       array[index + 1] = array[j];
     }
-    array[index + 1] = insertionSort;
+    array[index + 1] = numberToinsert;
   }
   return array;
 }
