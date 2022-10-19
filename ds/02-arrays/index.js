@@ -310,3 +310,225 @@ console.log(" insertionSort ---- ", insertionSort([2, 3, 4, 1, 9, 4]));
 // merge the two given array in sorted order
 
 function mergeSortedArrays(arr1, arr2) {}
+
+// find the average of all contiguous subarrays of size ‘5’ in the given array.
+// Array: [1, 3, 2, 6, -1, 4, 1, 8, 2], K=5
+// Output: [2.2, 2.8, 2.4, 3.6, 2.8]
+
+function avgOfContiguousSubArrays(arr, k) {
+  let count = 1;
+  let res = [];
+  let tempRes = [];
+  let isCalAvg = false;
+  do {
+    for (let index = res.length; index < arr.length && count <= k; index++) {
+      tempRes.push(arr[index]);
+      if (count === k) {
+        let temp =
+          tempRes.reduce((prev, current) => prev + current) / tempRes.length;
+        res.push(temp);
+        count = 1;
+        isCalAvg = true;
+        tempRes = [];
+      }
+    }
+  } while (isCalAvg);
+  return res;
+}
+
+// from internet
+// Time efficiency O(N * K)
+
+function calAvgofContiguousSubArrays(arr, k) {
+  let res = [];
+  for (let i = 0; i < arr.length - k + 1; i++) {
+    let sum = 0;
+    for (let j = i; j < i + k; j++) {
+      sum += arr[j];
+    }
+    res.push(sum / k);
+  }
+  return res;
+}
+
+// slide window algorithm
+// Time efficiency O(N)
+function calAvgofContiguousSubArrays1(arr, k) {
+  let res = [];
+  let windowStart = 0,
+    windowSum = 0.0;
+  for (let windowEnd = 0; windowEnd < arr.length; windowEnd++) {
+    windowSum += arr[windowEnd];
+    if (windowEnd >= k - 1) {
+      res.push(windowSum / k);
+      windowSum -= arr[windowStart];
+      windowStart++;
+    }
+  }
+  return res;
+}
+
+// Given an array of positive numbers and a positive number ‘k,’
+// find the maximum sum of any contiguous subarray of size ‘k’.
+
+// Input: [2, 1, 5, 1, 3, 2], k=3
+// Output: 9
+// Explanation: Subarray with maximum sum is [5, 1, 3].
+
+// Input: [2, 3, 4, 1, 5], k=2
+// Output: 7
+// Explanation: Subarray with maximum sum is [3, 4].
+
+function MaxSizeSubArraySum(array, S) {
+  let maxSum = 0,
+    windowSum = 0,
+    windowStart = 0;
+  for (let windowEnd = 0; windowEnd < array.length; windowEnd++) {
+    windowSum += array[windowEnd];
+    if (windowEnd >= S - 1) {
+      maxSum = Math.max(maxSum, windowSum);
+      windowSum = windowSum - array[windowStart];
+      windowStart++;
+    }
+  }
+  return maxSum;
+}
+
+console.log(" max size sub array sum", MaxSizeSubArraySum([2, 3, 4, 1, 5], 2));
+
+// Smallest Subarray with a given sum (easy)
+// Given an array of positive numbers and a positive number ‘S’,
+// find the length of the smallest contiguous subarray whose sum is greater than or equal to ‘S’.
+// Return 0, if no such subarray exists.
+
+// Input: [2, 1, 5, 2, 3, 2], S=7
+// Output: 2
+// Explanation: The smallest subarray with a sum great than or equal to '7' is [5, 2].
+
+// Input: [2, 1, 5, 2, 8], S=7
+// Output: 1
+// Explanation: The smallest subarray with a sum greater than or equal to '7' is [8].
+
+// Input: [3, 4, 1, 1, 6], S=8
+// Output: 3
+// Explanation: Smallest subarrays with a sum greater than or equal to '8' are [3, 4, 1] or [1, 1, 6].
+
+function MinSizeSubArraySum(array, S) {
+  let minLength = Infinity,
+    windowSum = 0,
+    windowStart = 0;
+  for (let windowEnd = 0; windowEnd < array.length; windowEnd++) {
+    windowSum += array[windowEnd];
+    while (windowSum >= S) {
+      minLength = Math.min(minLength, windowEnd - windowStart + 1);
+      windowSum -= arr[windowStart];
+      windowStart += 1;
+    }
+  }
+  if (minLength === Infinity) return 0;
+  else minLength;
+}
+
+// TWO SUM
+// Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
+
+// You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+// You can return the answer in any order.
+
+// Example 1:
+// Input: nums = [2,7,11,15], target = 9
+// Output: [0,1]
+// Explanation: Because nums[0] + nums[1] == 9, we return [0, 1].
+
+// Example 2:
+// Input: nums = [3,2,4], target = 6
+// Output: [1,2]
+
+// Example 3:
+// Input: nums = [3,3], target = 6
+// Output: [0,1]
+
+function twoSum(nums, target) {
+  for (let i = 0; i < nums.length; i++) {
+    for (let j = i + 1; j < nums.length; j++) {
+      if (nums[i] + nums[j] === target) return [i, j];
+    }
+  }
+}
+
+// alternate solutions
+// time = O(n); space = O(n)
+// 5 + 1 = 6; (1 = 6 - 5)
+function TwoSum(array, target) {
+  let hash_map = {};
+  for (let index = 0; index < array.length; index++) {
+    if (array[index] in hash_map) {
+      return [index, hash_map[array[index]]];
+    } else {
+      hash_map[target - array[index]] = index;
+    }
+  }
+}
+
+// Longest Substring with maximum K Distinct Characters (medium)
+// Given a string, find the length of the longest substring in it with no more than K distinct characters.
+// Example 1:
+
+// Input: String="araaci", K=2
+// Output: 4
+// Explanation: The longest substring with no more than '2' distinct characters is "araa".
+// Example 2:
+
+// Input: String="araaci", K=1
+// Output: 2
+// Explanation: The longest substring with no more than '1' distinct characters is "aa".
+// Example 3:
+
+// Input: String="cbbebi", K=3
+// Output: 5
+// Explanation: The longest substrings with no more than '3' distinct characters are "cbbeb" & "bbebi".
+// Example 4:
+
+// Input: String="cbbebi", K=10
+// Output: 6
+// Explanation: The longest substring with no more than '10' distinct characters is "cbbebi".
+
+const longest_substring_with_k_distinct = function (str, k) {
+  // TODO: Write your code here
+  let windowStart = 0;
+  let hashmap = {};
+  for (let windowEnd = 0; windowEnd < str.length; windowEnd++) {
+    if (Object.keys)
+      if (str[windowEnd] in hashmap) {
+        hashmap[str[windowEnd]]++;
+      } else {
+        hashmap[str[windowEnd]] = 1;
+      }
+  }
+  return -1;
+};
+
+// Given an array of sorted numbers and a target sum, find a pair in the array whose sum is equal to the given target.
+
+// Write a function to return the indices of the two numbers (i.e. the pair) such that they add up to the given target.
+
+// Example 1:
+
+// Input: [1, 2, 3, 4, 6], target=6
+// Output: [1, 3]
+// Explanation: The numbers at index 1 and 3 add up to 6: 2+4=6
+// Example 2:
+
+// Input: [2, 5, 9, 11], target=11
+// Output: [0, 2]
+// Explanation: The numbers at index 0 and 2 add up to 11: 2+9=11
+
+const pairWithTargetSum = (array, T) => {
+  let windowStart = 0,
+    windowSum = 0;
+  for (let windowEnd = 0; windowEnd < array.length; windowEnd++) {
+    windowSum += array[windowEnd]
+    
+  }
+};

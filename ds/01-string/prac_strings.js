@@ -226,6 +226,20 @@ function isValidPalindrome(str) {
   return true;
 }
 
+function isValidPalindroneNumber(num) {
+  let numToStr = num + "";
+  let startIndex = 0;
+  let endIndex = numToStr.length - 1;
+  while (startIndex < endIndex) {
+    if (numToStr[startIndex] !== numToStr[endIndex]) {
+      return false;
+    }
+    startIndex++;
+    endIndex--;
+  }
+  return true;
+}
+
 console.log(" isValidPalindrome ", isValidPalindrome("level"));
 
 function validParenthesis(str) {

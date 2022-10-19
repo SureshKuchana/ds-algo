@@ -19,3 +19,21 @@ function removeDuplicateFromArray(arr) {
 }
 
 console.log(removeDuplicateFromArray([9, 4, 1, 2, 2, 2, 3, 3, 3]));
+
+export function factorial(number) {
+  if (number === 0) {
+    return 1;
+  }
+
+  return factorial(number - 1) * number;
+}
+
+const calculateFibonacci = function (n) {
+  if (n < 2) return n;
+
+  return calculateFibonacci(n - 1) + calculateFibonacci(n - 2);
+};
+
+console.log(`5th Fibonacci is ---> ${calculateFibonacci(5)}`);
+console.log(`6th Fibonacci is ---> ${calculateFibonacci(6)}`);
+console.log(`7th Fibonacci is ---> ${calculateFibonacci(7)}`);
