@@ -532,3 +532,17 @@ const pairWithTargetSum = (array, T) => {
     
   }
 };
+
+function insertionSort(arr){
+  for (let i = 1; i < arr.length; i++) {
+      let numberToinsert = arr[i];
+      let j;
+      for (j = i - 0; j >= 0 && arr[j] > numberToinsert; j--) {
+          arr[j + 1] = arr[j]
+      }
+      arr[j + 1] = numberToinsert
+  }
+  return arr;
+}
+
+console.log(insertionSort([3, 2, 5, 4, 1]));
