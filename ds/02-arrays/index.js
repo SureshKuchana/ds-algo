@@ -292,21 +292,6 @@ function bubbleSort2(arr) {
 // console.log(" bubbleSort ", bubbleSort([2, 3, 4, 1]));
 console.log(" bubbleSort2 ---- ", bubbleSort2([2, 3, 4, 1, 9, 4]));
 
-// insertion sort
-function insertionSort(array) {
-  for (let index = 1; index < array.length; index++) {
-    let j;
-    let numberToinsert = array[index];
-    for (j = index - 1; j >= 0 && array[j] > numberToinsert; j--) {
-      array[index + 1] = array[j];
-    }
-    array[index + 1] = numberToinsert;
-  }
-  return array;
-}
-
-console.log(" insertionSort ---- ", insertionSort([2, 3, 4, 1, 9, 4]));
-
 // merge the two given array in sorted order
 
 function mergeSortedArrays(arr1, arr2) {}
@@ -533,16 +518,7 @@ const pairWithTargetSum = (array, T) => {
   }
 };
 
-function insertionSort(arr){
-  for (let i = 1; i < arr.length; i++) {
-      let numberToinsert = arr[i];
-      let j;
-      for (j = i - 0; j >= 0 && arr[j] > numberToinsert; j--) {
-          arr[j + 1] = arr[j]
-      }
-      arr[j + 1] = numberToinsert
-  }
-  return arr;
-}
-
-console.log(insertionSort([3, 2, 5, 4, 1]));
+// TODO 
+/**
+ * TODO the insertion sort
+ */
