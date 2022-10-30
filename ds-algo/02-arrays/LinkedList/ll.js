@@ -167,4 +167,47 @@ class LinkedList {
         }
         return null;
     }
+
+    toArray(){
+        const nodes = [];
+        let currentNode = this.head;
+        while(currentNode !== null){
+            nodes.push(currentNode);
+            currentNode = currentNode.next;
+        }
+        return nodes;
+    }
 }
+
+// create a ll using loops
+
+// input = [0,1,2,3,4,5];
+// recommended
+function createLinkedList (input){
+    let head = null;
+    let tail = null;
+    for (const i of input) {
+        if(head === null){
+            const node = new LinkedListNode(i);
+            head = node;
+            tail = head;
+        }else{
+            const node = new LinkedListNode(i);
+            tail.next = node;
+            tail = tail.next;
+        }
+    }
+    
+   traverseLinkedList(head);
+   return head;
+}
+
+function traverseLinkedList(list){
+    let currentList = list
+    while(currentList !== null){
+        console.log(" list ", currentList.value);
+        currentList = currentList.next
+    }
+}
+
+console.log(" LinkedList ", createLinkedList([0,1,2,3,4,5]));
