@@ -205,9 +205,38 @@ function createLinkedList (input){
 function traverseLinkedList(list){
     let currentList = list
     while(currentList !== null){
-        console.log(" list ", currentList.value);
         currentList = currentList.next
     }
 }
 
-console.log(" LinkedList ", createLinkedList([0,1,2,3,4,5]));
+// Reverse a Singly Linked List
+
+// Given the head of a singly linked list, reverse the linked list and return its new or updated head.
+// i/p [7, 14, 21, 28]  ==> o/p [28, 21, 14, 7]
+
+// time => o(n), space => o(n) 
+function reverseSingleLinkedList2(list){
+    let singleLinkedList = createLinkedList(list);
+    let arr = [];
+    while(singleLinkedList !== null){
+        arr.unshift(singleLinkedList.value);
+        singleLinkedList = singleLinkedList.next
+    }
+    let reversedSingleLinkedList = createLinkedList(arr)
+    return reversedSingleLinkedList;
+}
+
+// time => o(n), space => o(1) 
+function reverseSingleLinkedList(list){
+    let singleLinkedList = createLinkedList(list);
+    let node = singleLinkedList, prev, temp;
+    while(node){
+        temp = node.next;
+        node.next = prev;
+        prev = node;
+        node = temp;
+    }
+    return prev;
+}
+
+console.log(" reverseSingleLinkedList ", reverseSingleLinkedList([7, 14, 21, 28]))
