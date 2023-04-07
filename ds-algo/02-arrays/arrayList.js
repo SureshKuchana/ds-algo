@@ -70,7 +70,3 @@ console.log(arr.pop())
 console.log(arr.length())
 console.log(arr.delete(0))
 console.log(arr)
-
-
-
-
