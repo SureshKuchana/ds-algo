@@ -3,7 +3,7 @@
 
 // Thought process Pseudocode
 // 1. A function which takes a function as an argument
-// 2. The function argument must be passed the array index, the item and the context
+// 2. The function argument must be passed item, array index and the context
 
 Array.prototype.newMap = function(callback) {
   let result = [];
@@ -15,3 +15,11 @@ Array.prototype.newMap = function(callback) {
   }
   return result;
 }
+
+// example
+const numbers = [1, 2, 3, 4]
+numbers[10] = 34;
+const double = numbers.newMap((item, index) => {
+  return item * 2
+})
+console.log(double)
