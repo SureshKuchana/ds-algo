@@ -17,17 +17,17 @@
 // -109 <= target <= 109
 
 function twoSum(nums, target) {
-  let left = 0, right = 1;
-  while(left < right && right < nums.length){
-    const sum = nums[left] + nums[right];
-    if(sum === target){
-        return [left, right]
+  let hashmap = {};
+  for (let i = 0; i < nums.length; i++) {
+    if(nums[i] in hashmap){
+      return [hashmap[nums[i]], i];
+    }else{
+      hashmap[target - nums[i]] = i;
     }
-    left++;
-    right++
   }
 };
 
 console.log("twoSum ", twoSum([3,2,4], 6))
 console.log("twoSum ", twoSum([3,3], 6))
 console.log("twoSum ", twoSum([2,7,11,15], 9))
+console.log("twoSum ", twoSum([2,11,15,7], 9))

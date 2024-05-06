@@ -25,7 +25,8 @@ function largestNumber1(arr){
 			res.push(i);
 		}
 	}
+	return res;
 }
 
-console.log(" largestNumber " , largestNumber([3,5,9,1,7,9]));
-console.log(" largestNumber " , largestNumber([5,3,7,9,9,1]));
+console.log(" largestNumber " , largestNumber1([3,5,9,1,7,9]));
+console.log(" largestNumber " , largestNumber1([5,3,7,9,9,1]));
