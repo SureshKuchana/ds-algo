@@ -12,7 +12,8 @@
 // Transpilers. (https://javascript.info/polyfills#transpilers)
 // Polyfills.   (https://javascript.info/polyfills#polyfills)
 
-// A transpiler is a special piece of software that translates source code to another source code. It can parse (“read and understand”) modern code and rewrite it using older syntax constructs, so that it’ll also work in outdated engines.
+// A transpiler is a special piece of software that translates source code to another source code.
+// It can parse (“read and understand”) modern code and rewrite it using older syntax constructs, so that it’ll also work in outdated engines.
 
 // E.g. JavaScript before year 2020 didn’t have the “nullish coalescing operator” ??. So, if a visitor uses an outdated browser, it may fail to understand the code like height = height ?? 100.
 
