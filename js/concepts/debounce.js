@@ -27,7 +27,7 @@ const fetchData = () => {
 
 const debounce = function(fn, d){
   let timer;
-  return function(){
+  return function(...args){
     let context = this;    
     clearTimeout(timer);
     timer = setTimeout(() => {
