@@ -56,7 +56,21 @@ var shuffle = function(nums, n) {
   for (let index = 0; index < n; index++) {
     res.push(nums[index], nums[n + index]);    
   }
-  
+
+  return res;
+};
+
+// or
+var shuffle = function(nums, n) {
+  let i = 0;
+  let count = 2 * n;
+  let res = [];
+  while(count){
+    res.push(nums[i++])
+    res.push(nums[n++])
+    count = count - 2;
+  }
+
   return res;
 };
 
