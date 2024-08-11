@@ -1,10 +1,10 @@
 // binary search
 
-function binarySearch(arr, target){s
+function binarySearch(arr, target){
 	let low = 0;
 	let high = arr.length;
 
-	do{s
+	do{
 		const mid = Math.floor(low + (high - low) / 2);
 		const val = arr[mid];
 		if(val === target){
