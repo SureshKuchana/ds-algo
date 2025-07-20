@@ -81,3 +81,52 @@ Queue1.prototype.dequeue = function(){
     delete item;
     return item
 }
+
+
+class Node{
+    constructor(data){
+        this.data = data;
+        this.prev = null;
+    }
+}
+
+class QueueNode {
+    constructor(){
+        this.first = this.last = null;
+    }
+
+    // return 1st item from queue
+    peek(){
+        return this.first;
+    }
+
+    // add a new last item to the queue
+    enqueue(item){
+        const newNode = new Node(item);
+
+        if(this.first === this.last) {
+            this.first = this.last = newNode;
+        } else {
+            this.last = newNode;
+            this.last.prev = newNode;
+        }
+
+        return newNode;
+    }
+
+    // remove the first item from the list
+    dequeue(){
+        const removeItem = this.first;
+
+        if(!removeItem) return null;
+
+        if(this.first === this.last) {
+            this.last = null;
+        }
+
+        this.first = removeItem.prev;
+
+        return removeItem;
+
+    }
+}

@@ -1,0 +1,7 @@
+.search-input{
+  width: 5rem;
+
+  &:focus {
+    width: 20rem;
+  }
+}

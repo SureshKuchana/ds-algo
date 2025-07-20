@@ -25,7 +25,7 @@ const fetchData = () => {
 
 const throttle = (fn, d) => {
   let flag = true;
-  return function(){      
+  return function() {   
     if(flag){
       fn();
       flag = false

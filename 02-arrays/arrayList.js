@@ -58,6 +58,14 @@ class ArrayList {
         delete this.data[this._length - 1];
         this._length--;
     }
+
+    insert(index, item) {
+        this._length++;
+        for (let i = this._length - 1; i > index; i--) {
+            this.data[i] = this.data[i - 1];
+        }
+        this.data[index] = item;
+    }
 }
 
 const arr = new ArrayList();

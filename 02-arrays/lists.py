@@ -1,5 +1,6 @@
 # smallest_positive
 from operator import le
+from typing import List
 
 
 def smallest_positive(in_list):
